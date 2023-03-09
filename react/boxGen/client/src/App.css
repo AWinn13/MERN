@@ -1,0 +1,9 @@
+.App {
+  text-align: center;
+}
+
+.d-flex {
+  gap: 10px;
+  justify-content: space-around;
+
+}
