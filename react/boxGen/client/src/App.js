@@ -19,7 +19,6 @@ function App() {
           <Box color={colors} />
         ))}
       </div>
-
     </div>
   );
 }
