@@ -12,9 +12,10 @@ function App() {
     setTasks([...tasks, newTask]);
   };
 
+
   const completeTask = index => {
     const newTasks = [...tasks];
-     newTasks[index].isComplete = !newTasks[index].isComplete;
+    newTasks[index].isComplete = !newTasks[index].isComplete;
     setTasks(newTasks);
   };
 
@@ -30,17 +31,21 @@ function App() {
       <div>
         {tasks.map((tasks, index) => (
           <Task
-            key={index}
             index={index}
             task={tasks}
             completeTask={completeTask}
             removeTask={removeTask}
           />
         ))}
-        
+
       </div>
     </div>
   );
 }
 
 export default App;
+
+
+let nums1 = [2,7,11,15]
+let target1 = 9
+var twoSum = function(nums, target) {
