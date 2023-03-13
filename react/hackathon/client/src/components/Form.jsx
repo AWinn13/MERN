@@ -15,10 +15,11 @@ const Form = (props) => {
 
   return(
     <div>
-        <form onSubmit = {handleSubmit}>
+        <form className='form-floating w-50 mx-auto' onSubmit = {handleSubmit}>
             <h4>Grocery List</h4>
-            <div>
-                <select name="" id="" onChange={(e) => setCategory(e.target.value)} value={item.category}>
+            <div className='form-floating mb-3'>
+                <select className='form-control' name="" id="" onChange={(e) => setCategory(e.target.value)} value={item.category}>
+                    <option>Select a Category</option>
                     <option value="meat">Meat</option>
                     <option value='produce'>Produce</option>
                     <option value='frozen'>Frozen</option>
@@ -27,15 +28,15 @@ const Form = (props) => {
                     <option value='dairy'>Dairy</option>
                 </select>
             </div>
-            <div>
-                <input type="text"  id="item" onChange={(e) => setItem(e.target.value)} value={item.item}/>
+            <div className='form-floating mb-3'>
+                <input className='form-control' type="text"  id="item" placeholder='Item' onChange={(e) => setItem(e.target.value)} value={item.item}/>
                 <label for="item">Item</label>
             </div>
-            <div>
-                <input type="number" name="quan" id="quan" value={item.quantity} onChange={(e) => setQuantity(e.target.value)} />
-                <label for="quan"></label>
+            <div className='form-floating mb-3'>
+                <input placeholder="Quantity" className='form-control' type="number" name="quan" id="quan" value={item.quantity} onChange={(e) => setQuantity(e.target.value)} />
+                <label for="quan">Quantity</label>
             </div>
-            <button type='submit'>GIVE ME FOOD</button>
+            <button className='btn btn-outline-light' type='submit'>GIVE ME FOOD</button>
         </form>
     </div>
   )

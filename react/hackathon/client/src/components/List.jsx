@@ -1,20 +1,43 @@
 import React, { useState } from 'react';
 
 const List = ({ item, index, removeItem, completeItem }) => {
-    return(
-  <div>
-    <input 
-    type='checkbox' 
-    checked={item.isComplete} 
-    onChange = {() => completeItem(index)}
-    id=''
-     />
-    <div style={{ textDecoration: item.isComplete ? 'line-through' : '' }}>{item.category}</div>
-    <div style={{ textDecoration: item.isComplete ? 'line-through' : '' }}>{item.quantity}</div>
-    <div style={{ textDecoration: item.isComplete ? 'line-through' : '' }}>{item.item}</div>
-    <button onClick={() => removeItem(index)}>I don't need it</button>
-  </div>
-)
+
+    
+    
+  return (
+    <tr>
+      <td>
+        <input
+          type='checkbox'
+          checked={item.isComplete}
+          onChange={() => completeItem(index)}
+          id=''
+        />
+      </td>
+      <td style={{ textDecoration: item.isComplete ? 'line-through' : '' }}>
+        {item.category}
+      </td>
+
+      <td style={{ textDecoration: item.isComplete ? 'line-through' : '' }}>
+        {item.item}
+      </td>
+
+      <td style={{ textDecoration: item.isComplete ? 'line-through' : '' }}>
+        {item.quantity}
+      </td>
+
+      <td>
+        <button
+          className='btn btn-outline-danger'
+          onClick={() => removeItem(index)}
+        >
+          I don't need it
+        </button>
+      </td>
+
+      <td></td>
+    </tr>
+  );
 };
 
 export default List;
