@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -6,4 +7,16 @@
   width: 50%;
   margin: 0 auto;
   margin-top: 50px;
+}
+
+#box{
+  margin: 0 auto;
+  margin-top: 5%;
+  box-shadow: 1px 1px 1px gray;
+  
+}
+
+#form{
+  margin: 0 auto;
+  max-width: 75%;
 }

@@ -1,47 +1,45 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import { MenuItem, Select, InputLabel, FormControl } from '@mui/material';
 import TextField from '@mui/material/TextField';
 
+
 const Home = () => {
 
-    const [wookie, setWookie] = useState([])
+    const [thing, setThing] = useState('')
+    const [id, setId] = useState(1)
 
-    const getData = () => {
-        axios.get('http://swapi.dev/api/people/1/')
-            .then((response) => {
-                setWookie(response.data)
-                console.log(wookie)
-            }
-            )
-        }
 
+    const nav = useNavigate();
     const handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
+
+        nav(`/${thing}/${id}`)
     }
   return (
     <div className='center'>
-      <form action=''>
+      <form id='form' onSubmit={handleSubmit}>
         <Grid container spacing={2}>
           <Grid item>
             <FormControl sx={{ m: 1, minWidth: 220 }}>
               <InputLabel id='label'>Search For</InputLabel>
-              <Select autoWidth labelId='label' id='select' label='Search For' defaultValue=''>
-                <MenuItem value='People'>People</MenuItem>
-                <MenuItem value='Planets'>Planets</MenuItem>
+              <Select autoWidth color='secondary' labelId='label' id='select' label='Search For' defaultValue='' onChange={(e) => setThing(e.target.value)}>
+                <MenuItem value='people'>People</MenuItem>
+                <MenuItem value='planets'>Planets</MenuItem>
+                <MenuItem value='starships'>Starship</MenuItem>
               </Select>
             </FormControl>
           </Grid>
           <Grid item>
             <FormControl sx={{ m: 1, minWidth: 120 }}>
-              <TextField id='outlined-number' label='ID' type='number' />
+              <TextField color='secondary' id='outlined-number' label='ID' type='number' onChange={(e) => setId(e.target.value)} />
             </FormControl>
           </Grid>
           <Grid item>
             <FormControl sx={{ m: 2, minWidth: 250 }}>
-              <Button variant='contained' color='success' onClick={getData}>
+              <Button variant='contained' color='success' type='submit'>
                 Do or Do Not. There is no try
               </Button>
             </FormControl>
