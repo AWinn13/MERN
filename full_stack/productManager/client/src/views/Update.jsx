@@ -12,9 +12,10 @@ const Update = () => {
 
   useEffect(() => {
     axios.get(`http://localhost:8080/api/products/${id}`).then((res) => {
-      setTitle(res.data.title);
-      setPrice(res.data.price);
-      setDescription(res.data.description);
+      setTitle(res.data.product.title);
+      setPrice(res.data.product.price);
+      setDescription(res.data.product.description);
+      console.log(title)
     });
   }, []);
 

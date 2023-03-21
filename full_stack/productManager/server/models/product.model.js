@@ -2,25 +2,18 @@ const mongoose = require('mongoose');
 
 const ProductSchema = new mongoose.Schema({
     title: {
-        type: String,
-        required: [true, 'Must have a title'],
-        minlength: [3, 'Title must be at least 3 characters']
+        type: String, 
+        
     },
     price: {
-        type: Number,
-        required: [true, 'Must have a price'],
-        min: [0, 'Price must be greater than 0']
+        type: Number
     },
     description: {
-        type: String,
-        required: [true, 'Must have a description'],
-        minlength: [5, 'Description must be at least 5 characters']
+        type: String
     }
 
 },
     { timestamps: true }
 );
 
-const product = mongoose.model('product', ProductSchema);
-
-module.exports = product;
+module.exports.product = mongoose.model('product', ProductSchema);

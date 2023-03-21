@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { useParams } from 'react-router-dom';
+import{Link} from 'react-router-dom';
 import axios from 'axios';
 import {
   Box,
@@ -25,16 +26,20 @@ const Detail = () => {
   useEffect(() => {
     axios
       .get(`http://localhost:8080/api/products/${id}`)
-      .then((res) => setProduct(res.data))
+      .then((res) => setProduct(res.data.product) )
+      
       .catch((err) => console.error(err));
+      console.log(product)
   }, []);
 
   return (
-    <Box sx={{ width: '100%', maxWidth: 500 }}>
+    
+    <Box sx={{ width: '100%', maxWidth: 500, margin: '0 auto' }}>
+      <Link to={`/products/${product._id}/update`}>EDIT</Link>
       <List>
         <ListItem>
           <ListItemIcon>
-            <List />
+            <ListIcon />
           </ListItemIcon>
           <ListItemText>{product.title}</ListItemText>
         </ListItem>

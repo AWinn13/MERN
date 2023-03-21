@@ -1,24 +1,23 @@
 import React, { useState } from 'react';
 import  Grid  from '@mui/material/Grid';
-import { useNavigate } from 'react-router-dom';
 import { TextField, Button } from '@mui/material';
-import axios from 'axios';
 
-export default () => {
-  const [title, setTitle] = useState('');
-  const [price, setPrice] = useState('');
-  const [description, setDescription] = useState('');
+
+export default (props) => {
+  const [title, setTitle] = useState(props.product.title);
+  const [price, setPrice] = useState(props.product.price);
+  const [description, setDescription] = useState(props.product.description);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8080/api/products', {
-      title,
-      price,
-      description,
-    })
-    .then(res=>console.log(res))
-    .catch(err=>console.log(err))
+    
   };
+
+  props.makeProduct({
+    title,
+    price, 
+    description,
+  })
 
   return (
     <div>

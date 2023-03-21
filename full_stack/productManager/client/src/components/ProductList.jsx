@@ -1,16 +1,12 @@
-
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-} from '@mui/material';
+import { List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import axios from 'axios';
 
-export default ({ removeProduct, product }) => {
+const ProductList = ({ removeProduct, products }) => {
+  console.log(products);
+
   const deleteProduct = (id) => {
     axios
       .delete(`http://localhost:8080/api/products/${id}`)
@@ -19,12 +15,11 @@ export default ({ removeProduct, product }) => {
       })
       .catch((err) => console.log(err));
   };
-
   return (
     <div>
       <h3>Products</h3>
-      <List sx={{ width: '100%', maxWidth: 400 }}>
-        {product.map((product, i) => {
+      <List sx={{ width: '100%', maxWidth: 400, margin: '0 auto' }}>
+        {products.map((product, i) => (
           <ListItem>
             <ListItemText>
               <Link to={`/products/${product._id}`} key={i}>
@@ -38,9 +33,11 @@ export default ({ removeProduct, product }) => {
             >
               <DeleteIcon />
             </ListItemButton>
-          </ListItem>;
-        })}
+          </ListItem>
+        ))}
       </List>
     </div>
   );
 };
+
+export default ProductList;

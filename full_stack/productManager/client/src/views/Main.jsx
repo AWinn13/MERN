@@ -1,36 +1,41 @@
 import axios from 'axios';
 import Form from '../components/Form';
-import List from '../components/List';
+import ProductList from '../components/ProductList';
+
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Divider } from '@mui/material';
 
 
 const Main = (props) => {
   const [productList, setProductList] = useState([]);
-  const [loaded, setLoaded] = useState(false);
-
-  const nav = useNavigate();
+  
+  const createProduct = (newProduct) => {
+    axios.post('http://localhost:8080/api/products', newProduct )
+    .then(res=>console.log(res))
+    .catch(err=>console.log(err))
+  }
+  
 
   useEffect(() => {
     axios
       .get('http://localhost:8080/api/products')
       .then((res) => {
-        setProductList(res.data);
-        setLoaded(true);
+        setProductList(res.data.products);
       })
       .catch((err) => console.log(err));
   }, []);
 
   const removeProduct = (id) => {
-    setProductList(productList.filter((product) => product._id != id));
+    setProductList(productList.filter((product) => product._id !== id));
   };
+
+  
 
   return (
     <div>
-      <Form />
-      <hr />
-      <hr />
-      {productList && <List product = {productList} removeProduct = {removeProduct} />}
+      <Form makeProduct= {createProduct} product={{title:'', price:'', description:''}}/>
+      <Divider/>
+       {productList && <ProductList products = {productList} removeProduct = {removeProduct} />}
     </div>
   );
 };
