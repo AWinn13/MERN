@@ -2,6 +2,7 @@ import axios from 'axios';
 import Form from '../components/Form';
 import ProductList from '../components/ProductList';
 
+
 import React, { useState, useEffect } from 'react';
 import { Divider } from '@mui/material';
 
@@ -11,7 +12,7 @@ const Main = (props) => {
   
   const createProduct = (newProduct) => {
     axios.post('http://localhost:8080/api/products', newProduct )
-    .then(res=>console.log(res))
+    .then(res=> setProductList([...productList, res.data.product]))
     .catch(err=>console.log(err))
   }
   

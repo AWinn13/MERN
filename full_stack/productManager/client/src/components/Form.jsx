@@ -11,13 +11,15 @@ export default (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-  };
-
-  props.makeProduct({
+    props.makeProduct({
     title,
     price, 
     description,
   })
+
+  };
+
+  
 
   return (
     <div>
