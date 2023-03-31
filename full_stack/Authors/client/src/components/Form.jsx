@@ -10,7 +10,7 @@ export default (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    //! WHAT IS THIS DOING
+    
     submitForm({
       name,
     });
